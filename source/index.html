@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Сельские скульптуры</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrapper">
+        <div class="header__bar">
+          <div class="header__logo logo">
+            <img
+              src="img/logo_01.png"
+              alt=""
+              width="160"
+              height="55"
+              class="heade__logo-img logo__img"
+            />
+          </div>
+          <div class="header__cart button">
+            <a href="#" class="header__cart-link button__link">Корзина</a>
+            <div class="header__cart-quantity">10</div>
+          </div>
+          <div class="header__button-menu">
+            <svg
+              xlmns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="#ffffff"
+            >
+              <use xlink:href="#menu"></use>
+            </svg>
+          </div>
+          <nav class="header__menu main-menu">
+            <ul class="main-menu__list">
+              <li class="main-menu__item">
+                <a href="#" class="main-menu__link">Корзина</a>
+              </li>
+              <li class="main-menu__item">
+                <a href="#" class="main-menu__link">Пункт меню 1</a>
+              </li>
+              <li class="main-menu__item">
+                <a href="#" class="main-menu__link">Пункт меню 2</a>
+              </li>
+              <li class="main-menu__item">
+                <a href="#" class="main-menu__link">Пункт меню 3</a>
+              </li>
+              <li class="main-menu__item">
+                <a href="#" class="main-menu__link">Пункт меню 4</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="carusel">
+        <ul class="carusel__list">
+          <li class="carusel__item">
+            <div class="carusel__content">
+              <h2 class="carusel__content-title">Скульптура Лев</h2>
+              <p class="carusel__content-description">
+                Скульптура Лев выполнена из декоративного бетона или мрамора
+              </p>
+            </div>
+            <div class="carusel__image">
+              <img
+                src="img/picture/lion.png"
+                alt=""
+                class="carusel__image-src"
+              />
+            </div>
+          </li>
+          <li class="carusel__item carusel__item--close">
+            <div class="carusel__content">
+              <h2 class="carusel__content-title">Вазон Идеальная покупка</h2>
+              <p class="carusel__content-description">
+                Вазон идельаная покупка выполнен из декоративного бетона или
+                мрамора
+              </p>
+            </div>
+            <div class="carusel__image">
+              <img
+                src="img/picture/vazon.png"
+                alt=""
+                class="carusel__image-src"
+              />
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section class="product">
+        <ul class="product__list">
+          <li class="product__item isProduct">
+            <ul class="product__slider-list">
+              <li class="product__slider-item isSliderImage">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb02.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb03.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb04.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+            </ul>
+            <div class="product__info">
+              <h2 class="product__title" data-product-name="lion">Новый Лев</h2>
+              <p class="product__price">35 600 р.</p>
+              <div class="product__description">
+                <p>
+                  Здесь будет полное описание какого то твоара супер пупер
+                  нового. Здесь будет полное описание какого то твоара супер
+                  пупер нового. Здесь будет полное описание какого то твоара
+                  супер пупер нового.
+                </p>
+              </div>
+              <div class="product__separator"></div>
+              <div class="product__shop-panel">
+                <div class="product__quantity">
+                  <button
+                    type="button"
+                    class="product__add-increment product__button"
+                  >
+                    +
+                  </button>
+                  <input
+                    type="number"
+                    min="0"
+                    class="product__add-quantity product__button"
+                    value="0"
+                  />
+                  <button
+                    type="button"
+                    class="product__add-decriment product__button"
+                  >
+                    -
+                  </button>
+                </div>
+                <button type="button" class="product__add-to-cart">
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="product__item isProduct">
+            <ul class="product__slider-list">
+              <li class="product__slider-item isSliderImage">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb02.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb03.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb04.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+            </ul>
+            <div class="product__info">
+              <h2 class="product__title" data-product-name="flowerpot">
+                Название товара
+              </h2>
+              <p class="product__price isProductPrace">25 р.</p>
+              <div class="product__description isProductDescription">
+                <p>
+                  Здесь будет полное описание какого то твоара супер пупер
+                  нового. Здесь будет полное описание какого то твоара супер
+                  пупер нового. Здесь будет полное описание какого то твоара
+                  супер пупер нового.
+                </p>
+              </div>
+              <div class="product__separator"></div>
+              <div class="product__shop-panel">
+                <div class="product__quantity">
+                  <button
+                    type="button"
+                    class="product__add-increment product__button"
+                  >
+                    +
+                  </button>
+                  <input
+                    type="number"
+                    min="0"
+                    class="product__add-quantity product__button"
+                    value="0"
+                  />
+                  <button
+                    type="button"
+                    class="product__add-decriment product__button"
+                  >
+                    -
+                  </button>
+                </div>
+                <button type="button" class="product__add-to-cart">
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="product__item isProduct">
+            <ul class="product__slider-list">
+              <li class="product__slider-item isSliderImage">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb02.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb03.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb04.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+            </ul>
+            <div class="product__info">
+              <h2 class="product__title" data-product-name="flowerpot_two">
+                Название товара
+              </h2>
+              <p class="product__price isProductPrace">25 р.</p>
+              <div class="product__description isProductDescription">
+                <p>
+                  Здесь будет полное описание какого то твоара супер пупер
+                  нового. Здесь будет полное описание какого то твоара супер
+                  пупер нового. Здесь будет полное описание какого то твоара
+                  супер пупер нового.
+                </p>
+              </div>
+              <div class="product__separator"></div>
+              <div class="product__shop-panel">
+                <div class="product__quantity">
+                  <button
+                    type="button"
+                    class="product__add-increment product__button"
+                  >
+                    +
+                  </button>
+                  <input
+                    type="number"
+                    min="0"
+                    class="product__add-quantity product__button"
+                    value="0"
+                  />
+                  <button
+                    type="button"
+                    class="product__add-decriment product__button"
+                  >
+                    -
+                  </button>
+                </div>
+                <button type="button" class="product__add-to-cart">
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="product__item isProduct">
+            <ul class="product__slider-list">
+              <li class="product__slider-item isSliderImage">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb02.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb03.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb04.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+            </ul>
+            <div class="product__info">
+              <h2 class="product__title" data-product-name="flowerpot_free">
+                Скульптура льва
+              </h2>
+              <p class="product__price isProductPrace">25 р.</p>
+              <div class="product__description isProductDescription">
+                <p>
+                  Здесь будет полное описание какого то твоара супер пупер
+                  нового. Здесь будет полное описание какого то твоара супер
+                  пупер нового. Здесь будет полное описание какого то твоара
+                  супер пупер нового.
+                </p>
+              </div>
+              <div class="product__separator"></div>
+              <div class="product__shop-panel">
+                <div class="product__quantity">
+                  <button
+                    type="button"
+                    class="product__add-increment product__button"
+                  >
+                    +
+                  </button>
+                  <input
+                    type="number"
+                    min="0"
+                    class="product__add-quantity product__button"
+                    value="0"
+                  />
+                  <button
+                    type="button"
+                    class="product__add-decriment product__button"
+                  >
+                    -
+                  </button>
+                </div>
+                <button type="button" class="product__add-to-cart">
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="product__item isProduct">
+            <ul class="product__slider-list">
+              <li class="product__slider-item isSliderImage">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb01.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb02.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb03.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+              <li class="product__slider-item">
+                <img
+                  src="img/picture/shop-details-thumb04.png"
+                  alt=""
+                  class="product__slider-image"
+                />
+              </li>
+            </ul>
+            <div class="product__info">
+              <h2 class="product__title" data-product-name="lion_free">
+                Скульптура льва
+              </h2>
+              <p class="product__price isProductPrace">25 р.</p>
+              <div class="product__description isProductDescription">
+                <p>
+                  Здесь будет полное описание какого то твоара супер пупер
+                  нового. Здесь будет полное описание какого то твоара супер
+                  пупер нового. Здесь будет полное описание какого то твоара
+                  супер пупер нового.
+                </p>
+              </div>
+              <div class="product__separator"></div>
+              <div class="product__shop-panel">
+                <div class="product__quantity">
+                  <button
+                    type="button"
+                    class="product__add-increment product__button"
+                  >
+                    +
+                  </button>
+                  <input
+                    type="number"
+                    min="0"
+                    class="product__add-quantity product__button"
+                    value="0"
+                  />
+                  <button
+                    type="button"
+                    class="product__add-decriment product__button"
+                  >
+                    -
+                  </button>
+                </div>
+                <button type="button" class="product__add-to-cart">
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer"></footer>
+    <div class="cart">
+      Привет Мир
+      <ul class="cart__list">
+        
+      </ul>
+    </div>
+    <script src="js/main.js"></script>
+    <svg style="display: none">
+      <symbol version="1.0" viewBox="0 0 16 16" id="menu">
+        <path
+          d="M1.4 2.4c-1 2.6.4 4.8 2.8 4.4 3.3-.4 3.3-5.2 0-5.6-1.3-.2-2.5.3-2.8 1.2zM6 4c0 1.3-.7 2-2 2s-2-.7-2-2 .7-2 2-2 2 .7 2 2zM9.4 2.4c-1 2.6.4 4.8 2.8 4.4 3.3-.4 3.3-5.2 0-5.6-1.3-.2-2.5.3-2.8 1.2zM14 4c0 1.3-.7 2-2 2s-2-.7-2-2 .7-2 2-2 2 .7 2 2zM1.4 10.4c-1 2.6.4 4.8 2.8 4.4 3.3-.4 3.3-5.2 0-5.6-1.3-.2-2.5.3-2.8 1.2zM6 12c0 1.3-.7 2-2 2s-2-.7-2-2 .7-2 2-2 2 .7 2 2zM9.4 10.4c-1 2.6.4 4.8 2.8 4.4 3.3-.4 3.3-5.2 0-5.6-1.3-.2-2.5.3-2.8 1.2zM14 12c0 1.3-.7 2-2 2s-2-.7-2-2 .7-2 2-2 2 .7 2 2z"
+        />
+      </symbol>
+    </svg>
+  </body>
+</html>

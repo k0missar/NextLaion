@@ -1,0 +1,147 @@
+.product__list {
+  list-style: none;
+  @media (min-width: @width-big) {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.product__item {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &:nth-child(even) {
+    @media (min-width: @width-large) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  @media (min-width: @width-large) {
+    flex-direction: row;
+  }
+}
+
+.product__slider-list {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.product__slider-item {
+  max-width: 125px;
+  background-color: @color-transparent-white;
+  border-radius: 5px;
+  &:first-child {
+    max-width: 540px;
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
+}
+
+.product__slider-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.product__info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  @media (max-width: @width-large) {
+    padding: 0 20px;
+  }
+
+  @media (min-width: @width-large) {
+    width: 50%;
+  }
+}
+
+.product__title {
+  font-family: @font-title;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 48px;
+  text-transform: uppercase;
+  word-spacing: 0;
+  color: @color-black-brown;
+}
+
+.product__price {
+  display: block;
+  font-family: @font-title;
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 42px;
+  text-transform: uppercase;
+  word-spacing: 0;
+  color: @color-black-brown;
+}
+
+.product__description {
+  font-family: @font-body;
+  font-size: 16px;
+  line-height: 25px;
+  color: @color-gray;
+}
+
+.product__separator {
+  height: 3px;
+  background-color: @color-irish-green;
+}
+
+.product__shop-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.product__quantity {
+  display: flex;
+}
+
+.product__button {
+  max-width: 75px;
+  padding: 10px;
+  display: block;
+  border: 1px solid #e1e1e1;
+  font-size: 16px;
+  font-weight: 600;
+  color: @color-black-brown;
+  background-color: @color-white;
+  text-align: center;
+}
+
+.product__add-increment {
+  border-right: none;
+}
+
+.product__add-quantity {
+  &:focus {
+    outline: none;
+  }
+}
+
+.product__add-decriment {
+  border-left: none;
+}
+
+.product__add-to-cart {
+  padding: 10px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: @color-white;
+  background-color: @color-irish-green;
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+}

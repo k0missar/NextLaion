@@ -1,0 +1,35 @@
+.button {
+  justify-self: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    to right,
+    @color-yellow-green 0%,
+    @color-irish-green 100%
+  );
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  font-family: @font-body;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 14px;
+  text-transform: uppercase;
+  transition: all 1s linear;
+
+  &:hover {
+    background-image: linear-gradient(
+      to left,
+      @color-yellow-green 0%,
+      @color-irish-green 100%
+    );
+    //transition: all 1s ease;
+  }
+}
+
+.button__link {
+  text-decoration: none;
+  color: @color-white;
+}

@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap");
+
+@width-small: 320px;
+@width-medium: 575px;
+@width-large: 990px;
+@width-big: 1200px;
+
+@font-body: "Roboto", "Verdana", sans-serif;
+@font-title: "Oswald", "Verdana", sans-serif;
+
+@color-white: #ffffff;
+@color-transparent-white: #f8f9fa;
+@color-platinum: #e1e1e1;
+@color-gray: #777777;
+@color-black: #000000;
+@color-black-rgb: 0, 0, 0;
+@color-black-brown: #222222;
+@color-yellow-green: #94be26;
+@color-yellow-green-rgb: 148, 190, 38;
+@color-irish-green: #62af21;
+@color-irish-green-rgb: 98, 175, 33;
+@color-olive: #66b021;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import "block/button.less";
+@import "block/header.less";
+@import "block/main-menu.less";
+@import "block/cart.less";
+@import "block/carusel.less";
+@import "block/product.less";
+
+.page-html {
+  height: 100%;
+}
+
+.page-body {
+  height: 100%;
+  font-family: @font-body;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  color: @color-gray;
+  font-style: normal;
+}
+
+.wrapper {
+  @media (min-width: @width-big) {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
