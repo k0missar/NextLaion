@@ -20,7 +20,9 @@
             />
           </div>
           <div class="header__cart button">
-            <a href="#" class="header__cart-link button__link">Корзина</a>
+            <a href="#" class="header__cart-link button__link isCart"
+              >Корзина</a
+            >
             <div class="header__cart-quantity">10</div>
           </div>
           <div class="header__button-menu">
@@ -35,7 +37,7 @@
           </div>
           <nav class="header__menu main-menu">
             <ul class="main-menu__list">
-              <li class="main-menu__item">
+              <li class="main-menu__item isCart">
                 <a href="#" class="main-menu__link">Корзина</a>
               </li>
               <li class="main-menu__item">
@@ -491,13 +493,33 @@
     </main>
     <footer class="footer"></footer>
     <div class="cart">
-      <ul class="cart__list"></ul>
+      <div class="cart__close">
+        <svg width="50" height="50" fill="#fff">
+          <use xlink:href="#close"></use>
+        </svg>
+      </div>
+      <div class="cart__table">
+        <table class="cart__list"></table>
+      </div>
+      <div class="cart__total-cost">
+        <p>Итоговая стоимость: <span>0 Р.</span></p>
+      </div>
     </div>
     <script src="js/main.js"></script>
     <svg style="display: none">
-      <symbol version="1.0" viewBox="0 0 16 16" id="menu">
+      <symbol viewBox="0 0 16 16" id="menu">
         <path
           d="M1.4 2.4c-1 2.6.4 4.8 2.8 4.4 3.3-.4 3.3-5.2 0-5.6-1.3-.2-2.5.3-2.8 1.2zM6 4c0 1.3-.7 2-2 2s-2-.7-2-2 .7-2 2-2 2 .7 2 2zM9.4 2.4c-1 2.6.4 4.8 2.8 4.4 3.3-.4 3.3-5.2 0-5.6-1.3-.2-2.5.3-2.8 1.2zM14 4c0 1.3-.7 2-2 2s-2-.7-2-2 .7-2 2-2 2 .7 2 2zM1.4 10.4c-1 2.6.4 4.8 2.8 4.4 3.3-.4 3.3-5.2 0-5.6-1.3-.2-2.5.3-2.8 1.2zM6 12c0 1.3-.7 2-2 2s-2-.7-2-2 .7-2 2-2 2 .7 2 2zM9.4 10.4c-1 2.6.4 4.8 2.8 4.4 3.3-.4 3.3-5.2 0-5.6-1.3-.2-2.5.3-2.8 1.2zM14 12c0 1.3-.7 2-2 2s-2-.7-2-2 .7-2 2-2 2 .7 2 2z"
+        />
+      </symbol>
+      <symbol viewBox="0 0 48 48" id="delete">
+        <path
+          d="M20 8c0 .5-2.5 1-5.5 1-4.2 0-5.5.3-5.5 1.5 0 1.3 2.3 1.5 15 1.5s15-.2 15-1.5C39 9.3 37.7 9 33.5 9c-3 0-5.5-.5-5.5-1 0-.6-1.8-1-4-1s-4 .4-4 1zM11 24.9C11 39 11 39 24 39s13 0 13-14.1V14H11v10.9zm15.4-2.8c3.1-2.9 4.7-.9 1.7 2.3L26 26.7l2 1.8c1.1 1 2 2.2 2 2.7 0 1.3-2.2.9-4.2-.9-1.7-1.5-1.9-1.5-3.6 0-2 1.8-4.2 2.2-4.2.9 0-.5.9-1.7 2-2.7l2-1.8-2.1-2.3c-3-3.2-1.4-5.2 1.7-2.3l2.4 2.2 2.4-2.2z"
+        />
+      </symbol>
+      <symbol viewBox="0 0 64 64" id="close">
+        <path
+          d="M25 6.9c-4.6 1.5-8.5 3.9-11.6 7.3C8 19.9 6.5 23.7 6.5 32S8 44.1 13.4 49.8c5.3 5.7 10.1 7.7 18.6 7.7 5.7 0 8.4-.5 11.5-2.2 4.7-2.5 9.5-7.4 12.1-12.3 2.6-4.9 2.6-17.1 0-22-2.6-4.9-7.4-9.8-12.1-12.2C39.2 6.6 29.1 5.5 25 6.9zM27.7 24c1.8 1.6 3.9 3 4.5 3 .5 0 2.6-1.4 4.5-3 2.7-2.4 3.8-2.9 4.9-1.9 1.6 1.3.7 3.4-2.5 6.3-2.8 2.6-2.6 4.2.9 8.3 2.4 2.7 2.9 3.8 1.9 4.9-1.3 1.6-3.4.7-6.3-2.5-2.6-2.8-3.9-2.7-8.1 1.1-3.2 2.8-3.8 3-5.1 1.6-1.4-1.4-1.2-1.9 1.5-5.1 1.7-1.9 3.1-4 3.1-4.7 0-.7-1.4-2.8-3-4.7-2.5-2.8-2.9-3.8-1.9-4.9 1.5-1.9 1.6-1.9 5.6 1.6z"
         />
       </symbol>
     </svg>

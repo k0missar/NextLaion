@@ -74,7 +74,7 @@ if (storageAvailable("localStorage")) {
 //Функция получения/отправки данных продукта в localStorage
 function localStorageGetSet(method, lsdb, db) {
   if (method == "get") return JSON.parse(localStorage.getItem(lsdb));
-  if (method == "set") return localStorage.setItem(lsdb, JSON.stringify(db));
+  if (method == "set") localStorage.setItem(lsdb, JSON.stringify(db));
 }
 
 //Меню
@@ -90,6 +90,24 @@ if (mainMenuButton) {
   });
 }
 
+//Открытие закрытие корзины
+function cartOpenClose() {
+  const cart = document.querySelector(".cart");
+  const openCart = document.querySelectorAll(".isCart");
+  const closeCart = document.querySelector(".cart__close");
+  openCart.forEach((item) => {
+    item.addEventListener("click", () => {
+      cart.style.display = "flex";
+      document.querySelector(".cart__list").innerHTML = "";
+      cartFilling();
+    });
+  });
+  closeCart.addEventListener("click", () => {
+    cart.style.display = "none";
+  });
+}
+
+cartOpenClose();
 //Карусель
 const caruselItem = document.querySelectorAll(".carusel__item");
 function carusel(count = 0) {
@@ -192,6 +210,11 @@ addToCartButton.forEach((item, index) => {
     localStorage.setItem("product", JSON.stringify(productLists));
     productLists = JSON.parse(localStorage.getItem("product"));
     cartProductQuantityView();
+    productItemCreate();
+    if (document.querySelector(".cart").style.display == "flex") {
+      document.querySelector(".cart__list").innerHTML = "";
+      cartFilling();
+    }
   });
 });
 
@@ -206,46 +229,78 @@ class CartProductItem {
     this.imageSrc = options.imageSrc;
   }
 
+  deleteQuantity = function () {
+    this.quantity = 0;
+  };
+
   totalCost = function () {
     return this.quantity * this.price;
   };
 
-  liElement = function () {
-    const liElement = document.createElement("li");
-    liElement.className = "cart__item";
-    liElement.innerHTML = `
-      <img src="${this.imageSrc}" class="cart__item-image">
-      <p class="cart__item-name">${this.name}</p>
-      <p class="cart__item-quantity">${this.quantity}</p>
-      <p class="cart__item-total">${this.totalCost()}</p>`;
-    return liElement;
+  trElement = function () {
+    const trElement = document.createElement("tr");
+    trElement.className = "cart__item";
+    trElement.innerHTML = `
+      <td><img src="${this.imageSrc}" class="cart__item-image"><td>
+      <td><p class="cart__item-text">${this.name}</p></td>
+      <td><p class="cart__item-text">${this.quantity} шт.</p></td>
+      <td><p class="cart__item-text">${this.price} Р.</p></td>
+      <td><p class="cart__item-text">${this.totalCost()} Р.</p></td>
+      <td class="cart__item-text is${
+        this.id
+      }"><svg width="25" height="25" class="cart__delete"><use xlink:href="#delete"></svg></td>`;
+    return trElement;
   };
 }
 
-const cartProductList = localStorageGetSet("get", "product");
-for (key in cartProductList) {
-  window[key] = new CartProductItem({
-    id: key,
-    name: cartProductList[key].name,
-    quantity: cartProductList[key].quantity,
-    price: cartProductList[key].price,
-    description: cartProductList[key].description,
-    imageSrc: cartProductList[key].imageSrc,
-  });
+function productItemCreate() {
+  const cartProductList = localStorageGetSet("get", "product");
+  for (key in cartProductList) {
+    window[key] = new CartProductItem({
+      id: key,
+      name: cartProductList[key].name,
+      quantity: cartProductList[key].quantity,
+      price: cartProductList[key].price,
+      description: cartProductList[key].description,
+      imageSrc: cartProductList[key].imageSrc,
+    });
+  }
 }
+
+productItemCreate();
 
 function cartFilling() {
   const productList = Object.keys(localStorageGetSet("get", "product"));
-  const ul = document.querySelector(".cart__list");
+  const table = document.querySelector(".cart__list");
+  const cartTotalCost = document.querySelector(".cart__total-cost span");
   let totalCost = 0;
   productList.forEach((item) => {
     if (window[item].quantity) {
-      ul.append(window[item].liElement());
+      table.append(window[item].trElement());
       totalCost += window[item].totalCost();
     }
   });
-  ul.append((document.createElement("li").textContent = totalCost));
-  console.log(totalCost);
+  cartTotalCost.textContent = `${totalCost} Р.`;
+  deleteCartItem();
 }
 
-cartFilling();
+function deleteCartItem() {
+  let productListItem = localStorageGetSet("get", "product");
+  console.log(productListItem);
+  Object.keys(productListItem).forEach((item) => {
+    const el = document.querySelector(`.is${item}`);
+    if (el) {
+      el.addEventListener("click", () => {
+        console.log(productListItem[item].quantity);
+        productListItem[item].quantity = 0;
+        console.log(productListItem[item].quantity);
+        window[item].deleteQuantity();
+        localStorageGetSet("set", "product", productListItem);
+        if (document.querySelector(".cart").style.display == "flex") {
+          document.querySelector(".cart__list").innerHTML = "";
+          cartFilling();
+        }
+      });
+    }
+  });
+}
