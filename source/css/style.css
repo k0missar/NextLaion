@@ -212,8 +212,9 @@
 }
 .cart {
   position: fixed;
-  top: 0;
-  left: 5%;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
   border-top: 3px solid #62af21;
   border-bottom: 3px solid #62af21;
   background-color: #ffffff;
