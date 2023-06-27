@@ -212,11 +212,26 @@
 }
 .cart {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 5%;
   border-top: 3px solid #62af21;
   border-bottom: 3px solid #62af21;
   background-color: #ffffff;
+}
+.cart__list {
+  list-style: none;
+}
+.cart__item {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.cart__item:nth-child(even) {
+  background-color: #f8f9fa;
+}
+.cart__item-image {
+  width: 50px;
+  height: auto;
 }
 .carusel {
   min-width: 100%;

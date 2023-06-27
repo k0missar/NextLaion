@@ -1,8 +1,26 @@
 .cart {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 5%;
   border-top: 3px solid @color-irish-green;
   border-bottom: 3px solid @color-irish-green;
   background-color: @color-white;
+}
+
+.cart__list {
+  list-style: none;
+}
+
+.cart__item {
+  display: flex;
+  column-gap: 20px;
+
+  &:nth-child(even) {
+    background-color: @color-transparent-white;
+  }
+}
+
+.cart__item-image {
+  width: 50px;
+  height: auto;
 }

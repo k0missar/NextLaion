@@ -205,6 +205,21 @@ class CartProductItem {
     this.description = options.description;
     this.imageSrc = options.imageSrc;
   }
+
+  totalCost = function () {
+    return this.quantity * this.price;
+  };
+
+  liElement = function () {
+    const liElement = document.createElement("li");
+    liElement.className = "cart__item";
+    liElement.innerHTML = `
+      <img src="${this.imageSrc}" class="cart__item-image">
+      <p class="cart__item-name">${this.name}</p>
+      <p class="cart__item-quantity">${this.quantity}</p>
+      <p class="cart__item-total">${this.totalCost()}</p>`;
+    return liElement;
+  };
 }
 
 const cartProductList = localStorageGetSet("get", "product");
@@ -222,10 +237,15 @@ for (key in cartProductList) {
 function cartFilling() {
   const productList = Object.keys(localStorageGetSet("get", "product"));
   const ul = document.querySelector(".cart__list");
+  let totalCost = 0;
   productList.forEach((item) => {
-    console.dir(item);
-    console.log(item.quantity);
+    if (window[item].quantity) {
+      ul.append(window[item].liElement());
+      totalCost += window[item].totalCost();
+    }
   });
+  ul.append((document.createElement("li").textContent = totalCost));
+  console.log(totalCost);
 }
 
 cartFilling();
