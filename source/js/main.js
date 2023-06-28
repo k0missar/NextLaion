@@ -98,8 +98,8 @@ function cartOpenClose() {
   openCart.forEach((item) => {
     item.addEventListener("click", () => {
       cart.style.display = "flex";
-      document.querySelector(".cart__list").innerHTML = "";
-      cartFilling();
+      CartProductItem.cartCreate("product");
+      //document.querySelector(".cart__list").innerHTML = "";
     });
   });
   closeCart.addEventListener("click", () => {
@@ -204,17 +204,12 @@ addToCartButton.forEach((item, index) => {
     const productName =
       item.parentElement.parentElement.querySelector(".product__title").dataset
         .productName;
-    productLists[productName].quantity += Number(
-      productQuantityInput[index].value
+    window[productName].cartAddProduct(
+      Number(productQuantityInput[index].value)
     );
-    localStorage.setItem("product", JSON.stringify(productLists));
-    productLists = JSON.parse(localStorage.getItem("product"));
+
     cartProductQuantityView();
     productItemCreate();
-    if (document.querySelector(".cart").style.display == "flex") {
-      document.querySelector(".cart__list").innerHTML = "";
-      cartFilling();
-    }
   });
 });
 
@@ -229,27 +224,82 @@ class CartProductItem {
     this.imageSrc = options.imageSrc;
   }
 
-  deleteQuantity = function () {
+  static totalCost = 0;
+
+  static cartCreate = function (localStorageObjectName = "product") {
+    const cartList = document.querySelector(".cart__list");
+    cartList.innerHTML = ""; // Очищаем корзину
+    this.totalCost = 0; // Обнуляем итоговую сумму
+    const localStorageObject = JSON.parse(
+      localStorage.getItem(localStorageObjectName)
+    );
+    const localStorageObjectKeys = Object.keys(localStorageObject);
+    localStorageObjectKeys.forEach((item) => {
+      const productItem = window[item];
+      if (productItem.quantity > 0) {
+        this.totalCost += productItem.quantity * productItem.price; // Пересчет стоимости корзины
+        const cartListItem = document.createElement("tr");
+        cartListItem.className = "cart__item";
+        cartListItem.innerHTML += `
+          <td><img src="${productItem.imageSrc}" class="cart__item-image"><td>
+          <td><p class="cart__item-text">${productItem.name}</p></td>
+          <td><p class="cart__item-text">${productItem.quantity} шт.</p></td>
+          <td><p class="cart__item-text">${productItem.price} Р.</p></td>
+          <td><p class="cart__item-text">${productItem.totalCostProduct()} Р.</p></td>
+          <td class="cart__item-text is${
+            productItem.id
+          }"><svg width="25" height="25" class="cart__delete"><use xlink:href="#delete"></svg></td>`;
+        cartList.append(cartListItem);
+        const deleteItem = document.querySelector(`.is${productItem.id}`);
+        deleteItem.addEventListener("click", () => {
+          productItem.cartDeleteProduct();
+        });
+      }
+    });
+    const totalCost = document.querySelector(".cart__total-cost span");
+    totalCost.textContent = `${this.totalCost} Р.`;
+  };
+
+  modifyProducInLocalStorage = function (localStorageObjectName = "product") {
+    // localStorageObjectName - название объекта с базой продуктов в localStorage
+    let localStorageObject = JSON.parse(
+      localStorage.getItem(localStorageObjectName)
+    );
+    localStorageObject[this.id] = {
+      quantity: this.quantity,
+      name: this.name,
+      price: this.price,
+      description: this.description,
+      imageSrc: this.imageSrc,
+    };
+    localStorage.setItem(
+      localStorageObjectName,
+      JSON.stringify(localStorageObject)
+    );
+  };
+
+  cartIncrementProduct = function () {
+    this.quantity++;
+  };
+
+  cartDecrementProduct = function () {
+    if (this.quantity > 0) this.quantity--;
+  };
+
+  cartDeleteProduct = function () {
     this.quantity = 0;
+    this.modifyProducInLocalStorage();
+    this.__proto__.constructor.cartCreate();
   };
 
-  totalCost = function () {
+  cartAddProduct = function (quantity) {
+    this.quantity += quantity;
+    this.modifyProducInLocalStorage();
+    if (this.quantity > 0) this.__proto__.constructor.cartCreate();
+  };
+
+  totalCostProduct = function () {
     return this.quantity * this.price;
-  };
-
-  trElement = function () {
-    const trElement = document.createElement("tr");
-    trElement.className = "cart__item";
-    trElement.innerHTML = `
-      <td><img src="${this.imageSrc}" class="cart__item-image"><td>
-      <td><p class="cart__item-text">${this.name}</p></td>
-      <td><p class="cart__item-text">${this.quantity} шт.</p></td>
-      <td><p class="cart__item-text">${this.price} Р.</p></td>
-      <td><p class="cart__item-text">${this.totalCost()} Р.</p></td>
-      <td class="cart__item-text is${
-        this.id
-      }"><svg width="25" height="25" class="cart__delete"><use xlink:href="#delete"></svg></td>`;
-    return trElement;
   };
 }
 
@@ -268,39 +318,3 @@ function productItemCreate() {
 }
 
 productItemCreate();
-
-function cartFilling() {
-  const productList = Object.keys(localStorageGetSet("get", "product"));
-  const table = document.querySelector(".cart__list");
-  const cartTotalCost = document.querySelector(".cart__total-cost span");
-  let totalCost = 0;
-  productList.forEach((item) => {
-    if (window[item].quantity) {
-      table.append(window[item].trElement());
-      totalCost += window[item].totalCost();
-    }
-  });
-  cartTotalCost.textContent = `${totalCost} Р.`;
-  deleteCartItem();
-}
-
-function deleteCartItem() {
-  let productListItem = localStorageGetSet("get", "product");
-  console.log(productListItem);
-  Object.keys(productListItem).forEach((item) => {
-    const el = document.querySelector(`.is${item}`);
-    if (el) {
-      el.addEventListener("click", () => {
-        console.log(productListItem[item].quantity);
-        productListItem[item].quantity = 0;
-        console.log(productListItem[item].quantity);
-        window[item].deleteQuantity();
-        localStorageGetSet("set", "product", productListItem);
-        if (document.querySelector(".cart").style.display == "flex") {
-          document.querySelector(".cart__list").innerHTML = "";
-          cartFilling();
-        }
-      });
-    }
-  });
-}
