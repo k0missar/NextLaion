@@ -170,18 +170,8 @@ function removeQuntityCart() {
 addQuntityCart();
 removeQuntityCart();
 
-//Общее количество заказанных товаров
-function cartProductQuantity() {
-  let count = 0;
-  const productList = localStorageGetSet("get", "product");
-  for (key in productList) {
-    count += productList[key].quantity;
-  }
-  return count;
-}
-
 function cartProductQuantityView() {
-  const count = cartProductQuantity();
+  const count = CartProductItem.cartTotalItem();
   const cartProductQuantityView = document.querySelector(
     ".header__cart-quantity"
   );
@@ -192,8 +182,6 @@ function cartProductQuantityView() {
     cartProductQuantityView.style.display = "none";
   }
 }
-
-cartProductQuantityView();
 
 //Добавить товар в localStorage
 let productLists = JSON.parse(localStorage.getItem("product"));
@@ -258,6 +246,52 @@ class CartProductItem {
     });
     const totalCost = document.querySelector(".cart__total-cost span");
     totalCost.textContent = `${this.totalCost} Р.`;
+    this.cartForm();
+  };
+
+  static cartTotalItem = function (localStorageObjectName = "product") {
+    let count = 0;
+    const localStorageObject = JSON.parse(
+      localStorage.getItem(localStorageObjectName)
+    );
+    for (key in localStorageObject) {
+      count += window[key].quantity;
+    }
+    return count;
+  };
+
+  static cartForm = function () {
+    const cartForm = document.querySelector(".cart__form");
+    cartForm.classList.add("cart__form--close");
+    const cartOpenFormButton = document.querySelector(
+      ".cart__open-form-button"
+    );
+    cartOpenFormButton.addEventListener("click", () => {
+      cartForm.classList.remove("cart__form--close");
+    });
+  };
+
+  static cartSendForm = function (localStorageObjectName = "product") {
+    const localStorageObject = JSON.parse(
+      localStorage.getItem(localStorageObjectName)
+    );
+    const sendButton = document.querySelector(".cart__form-button");
+    const token = "6118634566:AAH9xXsQK2vhoRFvMnoGsthXlSvFwnnd5v4";
+    const chat = -1001949835917;
+    let api = new XMLHttpRequest();
+
+    let message = "Заказано: ";
+    for (key in localStorageObject) {
+      if (window[key].quantity)
+        message += `${window[key].name} в количестве ${window[key].quantity} шт. `;
+    }
+    message += `Заказчиком ${
+      document.querySelector("#name").value
+    }, номер телефона - ${document.querySelector("#phone").value}`;
+
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat}&text=${message}`;
+    api.open("GET", url, true);
+    api.send();
   };
 
   modifyProducInLocalStorage = function (localStorageObjectName = "product") {
@@ -290,6 +324,7 @@ class CartProductItem {
     this.quantity = 0;
     this.modifyProducInLocalStorage();
     this.__proto__.constructor.cartCreate();
+    cartProductQuantityView(); //КОСТЫЛЬ КОТОРЫЙ НУЖНО ПЕРЕНЕСТИ КАК МЕТОД КЛАССА
   };
 
   cartAddProduct = function (quantity) {
@@ -318,3 +353,5 @@ function productItemCreate() {
 }
 
 productItemCreate();
+
+cartProductQuantityView();

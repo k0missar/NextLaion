@@ -218,6 +218,7 @@
   transform: translateX(-50%);
   display: none;
   flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 @media (min-width: 1200px) {
   .cart {
@@ -283,6 +284,51 @@
 }
 .cart__total-cost span {
   font-weight: 500;
+}
+.cart__open-form {
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}
+.cart__button {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 5px 20px;
+  display: block;
+  font-family: "Roboto", "Verdana", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #62af21;
+  border: none;
+  border-radius: 5px;
+}
+.cart__form {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  font-family: "Roboto", "Verdana", sans-serif;
+  font-size: 16px;
+  color: #222222;
+}
+.cart__form--close {
+  display: none;
+}
+.cart__form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  display: block;
+  border: 1px solid #e1e1e1;
+  font-size: 16px;
+  font-weight: 500;
+  color: #222222;
+  background-color: #ffffff;
+  text-align: left;
 }
 .carusel {
   min-width: 100%;

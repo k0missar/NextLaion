@@ -504,6 +504,25 @@
       <div class="cart__total-cost">
         <p>Итоговая стоимость: <span>0 Р.</span></p>
       </div>
+      <div class="cart__open-form">
+        <button type="button" class="cart__button cart__open-form-button">
+          Перейти к оформлению
+        </button>
+      </div>
+      <form action="#" id="cart__form" class="cart__form">
+        <label for="name">Имя</label><input type="text" id="name" required />
+        <label for="phone">Телефон</label
+        ><input type="tel" id="phone" required /> <label for="mail">Email</label
+        ><input type="email" id="name" />
+        <label for="name">Адрес доставки</label><input type="text" id="name" />
+        <button
+          type="button"
+          onclick="CartProductItem.cartSendForm()"
+          class="cart__button cart__form-button"
+        >
+          Отправить
+        </button>
+      </form>
     </div>
     <script src="js/main.js"></script>
     <svg style="display: none">
